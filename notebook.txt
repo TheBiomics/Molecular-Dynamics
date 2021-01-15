@@ -1,0 +1,40 @@
+# Commented out IPython magic to ensure Python compatibility.
+# Switch to google drive to avoid loosing when session ends
+!dpkg -s "doxygen" > /dev/null 2>&1 || apt install "doxygen"
+%cd /content/drive/MyDrive/GMXGPUBUILD/
+
+import os.path
+from os import path
+
+if path.exists('gromacs-2020.tar.gz'):
+  print('gromacs already downloaded')
+else:
+  !wget http://ftp.gromacs.org/pub/gromacs/gromacs-2020.tar.gz
+
+if path.exists('cuda-ubuntu2004.pin'):
+  print('cuda pin already downloaded')
+else:
+  !wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-ubuntu2004.pin
+
+if path.exists('cuda-repo-ubuntu2004-11-2-local_11.2.0-460.27.04-1_amd64.deb'):
+  print('cuda deb already downloaded')
+else:
+  !wget https://developer.download.nvidia.com/compute/cuda/11.2.0/local_installers/cuda-repo-ubuntu2004-11-2-local_11.2.0-460.27.04-1_amd64.deb
+
+!mv cuda-ubuntu2004.pin /etc/apt/preferences.d/cuda-repository-pin-600
+!dpkg -i cuda-repo-ubuntu2004-11-2-local_11.2.0-460.27.04-1_amd64.deb
+!apt-key add /var/cuda-repo-ubuntu2004-11-2-local/7fa2af80.pub
+!apt-get update
+!apt-get -y install cuda
+
+!tar xfz gromacs-2020.tar.gz
+%cd gromacs-2020
+%mkdir build
+%cd build
+
+!cmake .. -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON -DGMX_GPU=on
+!make
+!make check
+!make install
+!source /usr/local/gromacs/bin/GMXRC
+
