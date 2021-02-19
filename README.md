@@ -10,5 +10,4 @@ Run a simple tutorial by copying pasting the text of MDTutorialFirst.ipy on goog
 
 ### Issues
 
-* Google colab free may disconnect from time to time
-* If you are in USA/Canada you can buy dedicated google research notebook 
+* Google colab has limited run time
