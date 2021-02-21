@@ -8,6 +8,13 @@ Use notebook.txt file text to paste and run to build gromacs on google colab ubu
 
 Run a simple tutorial by copying pasting the text of MDTutorialFirst.ipy on google colab notebook. Basic commands to help you get simple understanding on running simple simulations.
 
+## Useful options
+
+* -nb gpu : to run with GPU
+* -noappend : ?
+* -cpi CHECKPOINT_FROM_DEFFNAME : ?
+* -maxh HOURS_IN_INT : Numbers of hours to execute, terminate yourself before colab terminates it to avoid loss of data or file corruptions
+
 ### Issues
 
 * Google colab has limited run time
