@@ -1,10 +1,9 @@
+
 import re
 import shlex as SH
 import matplotlib.pyplot as PLOT
 import pandas as PD
 import csv as CSV
-
-
 
 def graph_plot_xvg_file(filepath):
   file = open(filepath, 'r', encoding='utf-8')
@@ -49,3 +48,31 @@ def graph_plot_xvg_file(filepath):
     write = CSV.writer(output_file) 
     write.writerow(graph_columns) 
     write.writerows(graph_values) 
+
+  # PLOT.plot(
+  #       list(graph_values['x']),
+  #       list(graph_values['y']),
+  #       color='green',
+  #       linestyle='solid',
+  #       linewidth = 1, 
+  #       marker='.',
+  #       markerfacecolor='blue',
+  #       markersize=1
+  #     ) 
+
+  # # naming the x axis 
+  # PLOT.xlabel(graph_meta['xaxis']) 
+  # # naming the y axis 
+  # PLOT.ylabel(graph_meta['yaxis'])
+
+  # # giving a title to my graph 
+  # PLOT.title(graph_meta['title'] + ": " + graph_meta['subtitle'])
+    
+  # PLOT.locator_params(axis='y', nbins=6)
+  # PLOT.locator_params(axis='x', nbins=10)
+  # # function to show the plot
+
+  # PLOT.show()
+  # PLOT.savefig('project/testplot.png')
+
+graph_plot_xvg_file('project/rmsd.xvg')
