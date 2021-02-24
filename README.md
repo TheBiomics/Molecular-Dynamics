@@ -15,6 +15,11 @@ Run a simple tutorial by copying pasting the text of MDTutorialFirst.ipy on goog
 * -cpi CHECKPOINT_FROM_DEFFNAME : ?
 * -maxh HOURS_IN_INT : Numbers of hours to execute, terminate yourself before colab terminates it to avoid loss of data or file corruptions
 
+## Plotting Graphs in R and Python
+
+* Python - Convert xvg to csv and/or to plot directly
+* R - Directly plot using R 
+
 ### Issues
 
 * Google colab has limited run time
