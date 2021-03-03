@@ -1,10 +1,25 @@
 library(readr)
 
-# plotdir = "D:/RProjects/Plots/downloads/"
-plotdir = "D:/Documents/R/RProjects/Plots/downloads/xvg1/"
+# Plot Graphs From XVG File
+# @TODO:
+# Add file name as susbtitle for better description
+# Change Line Color for Better Visibility
+# Other options?
+# Styling graphs to look good
+
+
+# Prompt User to paste the directory to generate graphs in
+# n1<-readline(prompt="Enter skip 1: " )
+# n1<-as.integer(n1)
+
+
+plotdir = "/path/to/xvg/file/directory/"
+
+# https://sites.harding.edu/fmccown/r/
 
 files.xvg <- dir(plotdir, pattern =".xvg$")
 
+# windows.options(width=10, height=10)
 
 for(i in 1:length(files.xvg)){
   file <- files.xvg[i]
@@ -33,13 +48,10 @@ for(i in 1:length(files.xvg)){
       graph_values_y <- c(graph_values_y, v[2])
     }
   }
-  # graph_values <- data.frame(graph_values)
-  # names(graph_values) <- c(graph_meta$xaxis, graph_meta$yaxis)
-  # print(graph_values)
   graph_values <- data.frame(graph_values_x, graph_values_y)
+  # par(mar = c(4,4,4,4))
   names(graph_values) <- c(graph_meta$xaxis, graph_meta$yaxis)
-  # plot(graph_values, type='l')
-  jpeg(paste(plotdir, file, '.jpg', sep=''), width = 4, height = 4, units = 'in', res = 300)
+  jpeg(paste(plotdir, file, '.jpg', sep=''), width = 11, height = 8.5, units = 'in', res = 300)
   plot(graph_values, type='l')
   title(main = graph_meta$title, sub = graph_meta$subtitle,
       cex.main = 2,   font.main= 4, col.main= "red",
@@ -48,15 +60,3 @@ for(i in 1:length(files.xvg)){
       )
   dev.off()
 }
-
-# files.csv <- dir(plotdir, pattern =".csv$")
-# print(files.csv)
-# for(i in 1:length(files.csv)){
-#   # print(files.csv[i])
-#   fn <- files.csv[i]
-#   print(paste(plotdir, fn, sep=''))
-#   # data_matrix <- read_csv(paste(plotdir, fn, sep=''))
-#   # jpeg(paste(plotdir, fn, '.jpg', sep=''))
-#   # y <- plot(data_matrix, type='l')
-#   # dev.off()
-# }
