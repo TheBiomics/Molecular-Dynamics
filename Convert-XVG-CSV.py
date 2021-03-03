@@ -5,6 +5,15 @@ import matplotlib.pyplot as PLOT
 import pandas as PD
 import csv as CSV
 
+"""
+* Python Script- Converts XVG to CSV to plot graphs
+
+@TODO:
+Plot graphs and save in image format
+
+"""
+
+
 def graph_plot_xvg_file(filepath):
   file = open(filepath, 'r', encoding='utf-8')
   lines = file.readlines()
