@@ -16,6 +16,6 @@ Run a simple tutorial by copying pasting the text of MDTutorialFirst.ipy on goog
 
 ## Plotting Graphs in R and Python
 
-* Python - Convert xvg to csv and/or to plot directly
+* Python - Python based Utility to plot XVG is has [seperate repository](https://github.com/TheBiomics/GMXvg)
 * R - Directly plot using R 
 
