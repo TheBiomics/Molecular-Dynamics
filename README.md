@@ -1,11 +1,8 @@
 # Molecular Dynamics Simulation using Google Colab
+
 ## Building Gromacs/NAMD (Open Source) with GPU Support on Google Colab
 
-Use notebook.ipynb file to execute code to build gromacs on google colab's ubuntu environment with GPU RunTime turned on.
-
-## Running an example on google colab (May be without GPU support)
-
-Run a simple tutorial by copying pasting the text of MDTutorialFirst.ipy on google colab notebook. Basic commands to help you get simple understanding on running simple simulations.
+Use *.ipynb file to execute code to build gromacs on google colab's ubuntu environment with GPU RunTime turned on.
 
 ## Useful options
 
