@@ -13,6 +13,6 @@ Use *.ipynb file to execute code to build gromacs on google colab's ubuntu envir
 
 ## Plotting Graphs in R and Python
 
-* Python - Python based Utility to plot XVG is has [seperate repository](https://github.com/TheBiomics/GMXvg)
+* Python - Python based Utility has been moved to [seperate repository](https://github.com/TheBiomics/GMXvg) with executable files.
 * R - Directly plot using R 
 
