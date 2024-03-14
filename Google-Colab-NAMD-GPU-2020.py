@@ -35,6 +35,5 @@ from os import path
 if path.exists('/content/drive/MyDrive/NAMD/namd/namd2'):
   print('NAMD already downloaded')
 
-
 """ Run NAMD Fir First Time """
 !/content/drive/MyDrive/NAMD/namd/namd2
