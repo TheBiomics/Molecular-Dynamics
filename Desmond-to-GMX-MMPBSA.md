@@ -5,6 +5,8 @@ mkdir GMXout
 
 intermol-convert --des_in JOBNAME1-out.cms --gromacs --odir ./GMXout
 
+cd GMXout
+
 { echo "1|14"; echo "13"; echo "23"; echo "q"; }|gmx make_ndx -f conf.gro -o index.ndx
 
 gmx grompp -f md.mdp -o gmx.tpr -c gmx.gro -n index.ndx -p gmx.top
