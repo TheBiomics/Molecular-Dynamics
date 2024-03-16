@@ -1,3 +1,12 @@
+# Installation
+* `pip install git+https://github.com/shirtsgroup/InterMol.git`
+* 
+
+
+# Commands
+
+
+
 
 mkdir GMXout
 
