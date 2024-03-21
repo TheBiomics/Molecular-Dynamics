@@ -36,7 +36,23 @@ print(f"Installed in %s" % (TIME.time() - start_time))
 
 ## Example command
 Refer to [Desmond documentation](http://gohom.win/ManualHom/Schrodinger/Schrodinger_2012_docs/desmond/desmond_user_manual.pdf) for better understanding.
+
 ```py
-!/opt/schrodinger2021-1/utilities/multisim <YOUR COMMAND>
-!/opt/schrodinger2021-1/desmond <YOUR COMMAND>
+import os
+os.environ["USER"] = "colabuser"
+!export SCHRODINGER_DESMOND_LOGMONITOR=36000
+
+# Check GPU
+!/opt/schrodinger2021-1/utilities/query_gpgpu -a
+
+# First Job
+
+!/opt/schrodinger2021-1/utilities/multisim -LOCAL -JOBNAME TEST_JOB_1 -i TEST_JOB_1.cms -m TEST_JOB_1.msj
+
+# Job Control
+!/opt/schrodinger2021-1/jobcontrol -list all
+
+# Stop a Job
+!/opt/schrodinger2021-1/jobcontrol -stop 70b328106e39-0-61aafb17
+
 ```
