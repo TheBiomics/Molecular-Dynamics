@@ -2,32 +2,33 @@
 ### Convert lig.pdbqt to lig.mol2 using UCSF Chimera - AddH to add hydrogen under structure editing
 ### Follow https://www.swissparam.ch/SwissParam_gromacs_tutorial.html
 
+```
 !export path_to_gmx = /usr/local/gromacs/bin/gmx
 
 !/usr/local/gromacs/bin/gmx pdb2gmx -f protein.pdb -water tip3p -ignh -o conf.pdb -nochargegrp
-
+```
 ### Merge the protein and ligand coordinates. Insert the ATOM lines from the ligand.pdb into the conf.pdb file after the ter record. Atoms will be automatically renumbered in the next step.
-
+```
 !/usr/local/gromacs/bin/gmx editconf -f complex.pdb -o boxed.pdb -c -d 1.2 -bt octahedron
-
+```
 ### add ligand topology to the topol.top earliest before [moleculetype] records and add lig to [molecules] record
-
+```
 !/usr/local/gromacs/bin/gmx solvate -cp boxed.pdb -cs spc216.gro -p topol.top -o solv.gro --quiet
-
+```
 ### Moved to google colab
 
 ### Energy Minimisation
-
+```
 !/usr/local/gromacs/bin/gmx grompp -f ions.mdp -c solv.gro -p topol.top -o ions.tpr --quiet
-
+```
 !/usr/local/gromacs/bin/gmx genion -s ions.tpr -o solv_ions.gro -neutral -p topol.top --quiet
 
 ### Select 15 SOL to add ions to
-
+```
 !/usr/local/gromacs/bin/gmx grompp -f em.mdp -c solv_ions.gro -p topol.top -o em.tpr --quiet
 
 !/usr/local/gromacs/bin/gmx mdrun -v -deffnm em --quiet
-
+```
 ###  NVT
 
 !/usr/local/gromacs/bin/gmx make_ndx -f em.gro -o index.ndx --quiet
@@ -42,10 +43,10 @@
 !/usr/local/gromacs/bin/gmx mdrun -deffnm npt -v --quiet
 
 ###  Final Run
-
+```
 !/usr/local/gromacs/bin/gmx grompp -f md.mdp -c npt.gro -t npt.cpt -p topol.top -n index.ndx -o md_dpmc_final.tpr --quiet
 !/usr/local/gromacs/bin/gmx mdrun -deffnm md_dpmc_final -nb gpu -maxh 20 -v --quiet
-
+```
 # Resume the run
 # if path.exists('md_dpmc_final.tpr'):
 #   !/usr/local/gromacs/bin/gmx mdrun -deffnm md_dpmc_final -cpi md_dpmc_final -maxh 20 -v --quiet -nb gpu
