@@ -1,0 +1,8 @@
+&general
+startframe=980, endframe=1000, interval=1, verbose=2,
+/
+
+&gb
+igb=5
+/
+        
